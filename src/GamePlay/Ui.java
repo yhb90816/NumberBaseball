@@ -5,6 +5,9 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Ui extends JFrame {
+	Hard hard = new Hard();
+	Medium medium = new Medium();
+	Easy easy = new Easy();
 	
 	public Ui() {
 		setTitle("숫자 야구게임");
@@ -14,28 +17,47 @@ public class Ui extends JFrame {
 		
 		JLabel l = new JLabel("숫자 야구");
 		l.setFont(new Font("바탕",Font.PLAIN, 30));
-		l.setSize(400,100);
-		l.setLocation(220,10);
+		l.setBounds(220,10,400,100);
 		c.add(l);
-		JButton easy = new JButton("하");
-		easy.setSize(200, 50);
-		easy.setLocation(180,350);
-		easy.setBackground(Color.LIGHT_GRAY);
-		c.add(easy);
-		JButton medium = new JButton("중");
-		medium.setSize(200,50);
-		medium.setLocation(180,250);
-		medium.setBackground(Color.LIGHT_GRAY);
-		c.add(medium);
-		JButton hard = new JButton("상");
-		hard.setSize(200,50);
-		hard.setLocation(180,150);
-		hard.setBackground(Color.LIGHT_GRAY);
-		c.add(hard);
+		JButton e = new JButton("하");
+		e.setBounds(180,350,200,50);
+		e.setBackground(Color.LIGHT_GRAY);
+		e.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				c.removeAll();
+				c.revalidate();
+				c.repaint();
+				setContentPane(easy);
+			}
+		});
+		c.add(e);
+		JButton m = new JButton("중");
+		m.setBounds(180,250,200,50);
+		m.setBackground(Color.LIGHT_GRAY);
+		m.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				c.removeAll();
+				c.revalidate();
+				c.repaint();
+				setContentPane(medium);
+			}
+		});
+		c.add(m);
+		JButton h = new JButton("상");
+		h.setBounds(180,150,200,50);
+		h.setBackground(Color.LIGHT_GRAY);
+		h.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				c.removeAll();
+				c.revalidate();
+				c.repaint();
+				setContentPane(hard);
+			}
+		});
+		c.add(h);
 		c.setBackground(Color.WHITE);
-		c.addMouseListener(new MyMouseListener());
-		JLabel h = new JLabel("?");
-		h.addMouseListener(new MouseAdapter(){
+		JLabel ht = new JLabel("?");
+		ht.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e) {
 				JOptionPane.showMessageDialog(null, "사용되는 숫자는 0에서 9까지 서로 다른 숫자이다.\r\n" + 
 						"\r\n" + 
@@ -50,20 +72,14 @@ public class Ui extends JFrame {
 						"중복 숫자는 사용하지 않는다.", "How to Play", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		h.setFont(new Font("바탕",Font.PLAIN,50));
-		h.setSize(50,50);
-		h.setLocation(500,500);
-		c.add(h);
+		ht.setFont(new Font("바탕",Font.PLAIN,50));
+		ht.setBounds(500,500,50,50);
+		c.add(ht);
 		
 		setSize(600,600);
-		setVisible(true);
-		
-		
+		setVisible(true);		
 	}
 	
-	class MyMouseListener extends MouseAdapter{
-		
-	}
 	public static void main(String args[]) {
 		new Ui();
 	}
