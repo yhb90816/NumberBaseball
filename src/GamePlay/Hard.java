@@ -39,6 +39,7 @@ public class Hard extends JPanel {
 		
 	}
 	public void BaseSetting() {
+		JLabel l = new JLabel("5자리 숫자야구");
 		JButton b1 = new JButton("1");
 		JButton b2 = new JButton("2");
 		JButton b3 = new JButton("3");
@@ -50,6 +51,7 @@ public class Hard extends JPanel {
 		JButton b9 = new JButton("9");
 		JButton b0 = new JButton("Enter");
 		JButton d = new JButton("Clear");
+		l.setFont(new Font("바탕",Font.PLAIN,30));
 		b1.setBackground(Color.LIGHT_GRAY);
 		b2.setBackground(Color.LIGHT_GRAY);
 		b3.setBackground(Color.LIGHT_GRAY);
@@ -61,20 +63,22 @@ public class Hard extends JPanel {
 		b9.setBackground(Color.LIGHT_GRAY);
 		b0.setBackground(Color.LIGHT_GRAY);
 		d.setBackground(Color.LIGHT_GRAY);
-		b1.setBounds(180,300,50,50);
-		b2.setBounds(255,300,50,50);
-		b3.setBounds(330,300,50,50);
-		b4.setBounds(180,375,50,50);
-		b5.setBounds(255,375,50,50);
-		b6.setBounds(330,375,50,50);
-		b7.setBounds(180,450,50,50);
-		b8.setBounds(255,450,50,50);
-		b9.setBounds(330,450,50,50);
-		b0.setBounds(405,450,75,50);
-		d.setBounds(405,375, 75,50);
-		add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b0);add(d);
+		l.setBounds(190,10,400,100);
+		b1.setBounds(180,440,50,50);
+		b2.setBounds(255,440,50,50);
+		b3.setBounds(330,440,50,50);
+		b4.setBounds(180,515,50,50);
+		b5.setBounds(255,515,50,50);
+		b6.setBounds(330,515,50,50);
+		b7.setBounds(180,590,50,50);
+		b8.setBounds(255,590,50,50);
+		b9.setBounds(330,590,50,50);
+		b0.setBounds(405,590,75,50);
+		d.setBounds(405,515,75,50);
+		l.setBounds(190, 10, 400, 100);
+		add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b0);add(d);add(l);
 		JTextField t1 = new JTextField(30);
-		t1.setBounds(208,250,150,30);
+		t1.setBounds(208,370,150,30);
 		add(t1);
 		t1.setEditable(false);
 		String header[]= {"입력된 숫자","스트라이크","볼","아웃"};
@@ -82,7 +86,7 @@ public class Hard extends JPanel {
 		DefaultTableModel model = new DefaultTableModel(contents,header);
 		JTable table = new JTable(model);
 		JScrollPane sc = new JScrollPane(table);
-		sc.setBounds(40,30,500,200);
+		sc.setBounds(40,130,500,200);
 		add(sc);
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -216,8 +220,9 @@ public class Hard extends JPanel {
 								b9.setEnabled(false);
 								b0.setEnabled(false);
 								d.setEnabled(false);
+								System.exit(0);
 							}
-							else if(tryingCount==7) {
+							else if(tryingCount==10) {
 								JOptionPane.showMessageDialog(null, "게임 오버", "Game Over", JOptionPane.INFORMATION_MESSAGE);
 								b1.setEnabled(false);
 								b2.setEnabled(false);
@@ -230,10 +235,13 @@ public class Hard extends JPanel {
 								b9.setEnabled(false);
 								b0.setEnabled(false);
 								d.setEnabled(false);
+								System.exit(0);
 							}
+							
 							for(int i=0;i<ans.length;i++) {
 								System.out.println(ans[i]);
 							}
+							
 							String inputStr[] = new String[4];
 							
 							inputStr[0] = t1.getText();

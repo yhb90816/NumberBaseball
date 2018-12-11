@@ -30,7 +30,7 @@ public class Ui extends JFrame {
 					c1.repaint();
 					setContentPane(easy);
 					ea.setText("중");
-					ea.setBounds(450, 653, 120, 50);
+					ea.setBounds(305, 683, 120, 50);
 					add(ea);
 				}
 				else if(b.getText().equals("중")) {
@@ -40,7 +40,7 @@ public class Ui extends JFrame {
 					c2.repaint();
 					setContentPane(medium);
 					ea.setText("상");
-					ea.setBounds(450,513,120,50);
+					ea.setBounds(305,683,120,50);
 					add(ea);
 				}
 				else if(b.getText().equals("상")) {
@@ -50,7 +50,7 @@ public class Ui extends JFrame {
 					c5.repaint();
 					setContentPane(hard);
 					ea.setText("종료");
-					ea.setBounds(450, 513, 120, 50);
+					ea.setBounds(450, 683, 120, 50);
 					add(ea);
 				}
 				else if(b.getText().equals("종료")) {
@@ -72,7 +72,7 @@ public class Ui extends JFrame {
 					c3.repaint();
 					setContentPane(medium);
 					m.setText("상");
-					m.setBounds(450, 513, 120, 50);
+					m.setBounds(305, 683, 120, 50);
 					add(m);
 				}
 				else if(b.getText().equals("상")) {
@@ -82,7 +82,7 @@ public class Ui extends JFrame {
 					c7.repaint();
 					setContentPane(hard);
 					m.setText("종료");
-					m.setBounds(450, 513, 120, 50);
+					m.setBounds(450, 683, 120, 50);
 					add(m);
 				}
 				else if(b.getText().equals("종료")) {
@@ -104,7 +104,7 @@ public class Ui extends JFrame {
 					c4.repaint();
 					setContentPane(hard);
 					h.setText("종료");
-					h.setBounds(450, 513, 120, 50);
+					h.setBounds(450, 683, 120, 50);
 					add(h);
 				}
 				else if(b.getText().equals("종료")) {
