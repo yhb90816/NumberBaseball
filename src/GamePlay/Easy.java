@@ -16,7 +16,6 @@ public class Easy extends JPanel {
 	String judgeOut;
 	String[] ans = new String[3];
 	String[] num = new String[3];
-	Ui ui = new Ui();
 	
 	public Easy() {
 		setLayout(null);
@@ -35,7 +34,7 @@ public class Easy extends JPanel {
 		for(int i=0;iterator.hasNext();i++) {
 			ans[i] = (String)iterator.next();
 		}
-		
+
 		BaseSetting();
 	}
 	public void BaseSetting() {
@@ -49,6 +48,7 @@ public class Easy extends JPanel {
 		JButton b8 = new JButton("8");
 		JButton b9 = new JButton("9");
 		JButton b0 = new JButton("Enter");
+		JButton d = new JButton("Clear");
 		b1.setBackground(Color.LIGHT_GRAY);
 		b2.setBackground(Color.LIGHT_GRAY);
 		b3.setBackground(Color.LIGHT_GRAY);
@@ -59,26 +59,29 @@ public class Easy extends JPanel {
 		b8.setBackground(Color.LIGHT_GRAY);
 		b9.setBackground(Color.LIGHT_GRAY);
 		b0.setBackground(Color.LIGHT_GRAY);
-		b1.setBounds(180,300,50,50);
-		b2.setBounds(255,300,50,50);
-		b3.setBounds(330,300,50,50);
-		b4.setBounds(180,375,50,50);
-		b5.setBounds(255,375,50,50);
-		b6.setBounds(330,375,50,50);
-		b7.setBounds(180,450,50,50);
-		b8.setBounds(255,450,50,50);
-		b9.setBounds(330,450,50,50);
-		b0.setBounds(405,450,75,50);
-		add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b0);
+		d.setBackground(Color.LIGHT_GRAY);
+		b1.setBounds(180,440,50,50);
+		b2.setBounds(255,440,50,50);
+		b3.setBounds(330,440,50,50);
+		b4.setBounds(180,515,50,50);
+		b5.setBounds(255,515,50,50);
+		b6.setBounds(330,515,50,50);
+		b7.setBounds(180,590,50,50);
+		b8.setBounds(255,590,50,50);
+		b9.setBounds(330,590,50,50);
+		b0.setBounds(405,590,75,50);
+		d.setBounds(405,515,75,50);
+		add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);add(b0);add(d);
 		JTextField t1 = new JTextField(30);
-		t1.setBounds(208,250,150,30);
+		t1.setBounds(208,390,150,30);
 		add(t1);
+		t1.setEditable(false);
 		String header[]= {"입력된 숫자","스트라이크","볼","아웃"};
 		String contents[][]= {};
 		DefaultTableModel model = new DefaultTableModel(contents,header);
 		JTable table = new JTable(model);
 		JScrollPane sc = new JScrollPane(table);
-		sc.setBounds(40,30,500,200);
+		sc.setBounds(40,170,500,200);
 		add(sc);
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -198,9 +201,37 @@ public class Easy extends JPanel {
 							else {
 								judgeOut = "X";
 							}
+							tryingCount++;
 							if(strikeCount==3) {
 								JOptionPane.showMessageDialog(null, "정답입니다!", "", JOptionPane.INFORMATION_MESSAGE);
-								
+								b1.setEnabled(false);
+								b2.setEnabled(false);
+								b3.setEnabled(false);
+								b4.setEnabled(false);
+								b5.setEnabled(false);
+								b6.setEnabled(false);
+								b7.setEnabled(false);
+								b8.setEnabled(false);
+								b9.setEnabled(false);
+								b0.setEnabled(false);
+								d.setEnabled(false);
+							}
+							else if(tryingCount==7) {
+								JOptionPane.showMessageDialog(null, "게임 오버", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+								b1.setEnabled(false);
+								b2.setEnabled(false);
+								b3.setEnabled(false);
+								b4.setEnabled(false);
+								b5.setEnabled(false);
+								b6.setEnabled(false);
+								b7.setEnabled(false);
+								b8.setEnabled(false);
+								b9.setEnabled(false);
+								b0.setEnabled(false);
+								d.setEnabled(false);
+							}
+							for(int i=0;i<ans.length;i++) {
+								System.out.println(ans[i]);
 							}
 							String inputStr[] = new String[4];
 							
@@ -210,16 +241,11 @@ public class Easy extends JPanel {
 							inputStr[3] = judgeOut;
 							
 							model.addRow(inputStr);
-							tryingCount++;
+							
 							strikeCount = 0;
 							ballCount = 0;
 							t1.setText("");
-							for(int i=0;i<ans.length;i++) {
-								System.out.println(ans[i]);
-							}
-							if(tryingCount==7) {
-								JOptionPane.showMessageDialog(null, "게임 오버", "Game Over", JOptionPane.INFORMATION_MESSAGE);
-							}
+							
 						}
 						else {
 							JOptionPane.showMessageDialog(null, "중복된 수가 있습니다.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -230,6 +256,11 @@ public class Easy extends JPanel {
 						JOptionPane.showMessageDialog(null, "3자리 숫자가 아닙니다.", "Error", JOptionPane.ERROR_MESSAGE);
 						t1.setText("");
 					}
+			}
+		});
+		d.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				t1.setText("");
 			}
 		});
 	}

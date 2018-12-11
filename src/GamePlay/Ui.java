@@ -5,57 +5,115 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Ui extends JFrame {
+	
 	Hard hard = new Hard();
 	Medium medium = new Medium();
 	Easy easy = new Easy();
-	
+	Start start = new Start();
+	JButton ea = new JButton("하");
+
 	public Ui() {
 		setTitle("숫자 야구게임");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Container c = getContentPane();
-		c.setLayout(null);
 		
-		JLabel l = new JLabel("숫자 야구");
-		l.setFont(new Font("바탕",Font.PLAIN, 30));
-		l.setBounds(220,10,400,100);
-		c.add(l);
-		JButton e = new JButton("하");
-		e.setBounds(180,350,200,50);
-		e.setBackground(Color.LIGHT_GRAY);
-		e.addMouseListener(new MouseAdapter() {
+		setContentPane(start);
+		
+		ea.setBounds(180,550,200,100);
+		ea.setBackground(Color.LIGHT_GRAY);
+		ea.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				c.removeAll();
-				c.revalidate();
-				c.repaint();
-				setContentPane(easy);
+				JButton b = (JButton)e.getSource();
+				if(b.getText().equals("하")) {
+					Container c1 = getContentPane();
+					c1.removeAll();
+					c1.revalidate();
+					c1.repaint();
+					setContentPane(easy);
+					ea.setText("중");
+					ea.setBounds(450, 653, 120, 50);
+					add(ea);
+				}
+				else if(b.getText().equals("중")) {
+					Container c2 = getContentPane();
+					c2.removeAll();
+					c2.revalidate();
+					c2.repaint();
+					setContentPane(medium);
+					ea.setText("상");
+					ea.setBounds(450,513,120,50);
+					add(ea);
+				}
+				else if(b.getText().equals("상")) {
+					Container c5 = getContentPane();
+					c5.removeAll();
+					c5.revalidate();
+					c5.repaint();
+					setContentPane(hard);
+					ea.setText("종료");
+					ea.setBounds(450, 513, 120, 50);
+					add(ea);
+				}
+				else if(b.getText().equals("종료")) {
+					System.exit(0);
+				}
 			}
 		});
-		c.add(e);
+		add(ea);
 		JButton m = new JButton("중");
-		m.setBounds(180,250,200,50);
+		m.setBounds(180,400,200,100);
 		m.setBackground(Color.LIGHT_GRAY);
 		m.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				c.removeAll();
-				c.revalidate();
-				c.repaint();
-				setContentPane(medium);
+				JButton b = (JButton)e.getSource();
+				if(b.getText().equals("중")) {
+					Container c3 = getContentPane();
+					c3.removeAll();
+					c3.revalidate();
+					c3.repaint();
+					setContentPane(medium);
+					m.setText("상");
+					m.setBounds(450, 513, 120, 50);
+					add(m);
+				}
+				else if(b.getText().equals("상")) {
+					Container c7 = getContentPane();
+					c7.removeAll();
+					c7.revalidate();
+					c7.repaint();
+					setContentPane(hard);
+					m.setText("종료");
+					m.setBounds(450, 513, 120, 50);
+					add(m);
+				}
+				else if(b.getText().equals("종료")) {
+					System.exit(0);
+				}
 			}
 		});
-		c.add(m);
+		add(m);
 		JButton h = new JButton("상");
-		h.setBounds(180,150,200,50);
+		h.setBounds(180,250,200,100);
 		h.setBackground(Color.LIGHT_GRAY);
 		h.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				c.removeAll();
-				c.revalidate();
-				c.repaint();
-				setContentPane(hard);
+				JButton b = (JButton)e.getSource();
+				if(b.getText().equals("상")) {
+					Container c4 = getContentPane();
+					c4.removeAll();
+					c4.revalidate();
+					c4.repaint();
+					setContentPane(hard);
+					h.setText("종료");
+					h.setBounds(450, 513, 120, 50);
+					add(h);
+				}
+				else if(b.getText().equals("종료")) {
+					System.exit(0);
+				}
 			}
 		});
-		c.add(h);
-		c.setBackground(Color.WHITE);
+		add(h);
+		setBackground(Color.WHITE);
 		JLabel ht = new JLabel("?");
 		ht.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e) {
@@ -73,10 +131,10 @@ public class Ui extends JFrame {
 			}
 		});
 		ht.setFont(new Font("바탕",Font.PLAIN,50));
-		ht.setBounds(500,500,50,50);
-		c.add(ht);
+		ht.setBounds(500,675,50,50);
+		add(ht);
 		
-		setSize(600,600);
+		setSize(600,800);
 		setVisible(true);		
 	}
 	
